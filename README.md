@@ -41,42 +41,42 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
 ```
 smValidator("package_form", {
         title: {
-            'notEmpty': {
+            notEmpty: {
                 message: "The title is required"
             },            
-            'stringLength': {
+            stringLength: {
                 min:60,
                 max: 160,
                 message: "The title length must be within 60 to 160."
             }
         },
-        password: {
-            'notEmpty': {
+        email: {
+            notEmpty: {
                 message: "The password field is required"
             },
-            'email': {
+            email: {
                 message: "The email must be valid!",
             }
         },
-        email: {
-            'notEmpty': {
+        password: {
+            notEmpty: {
                 message: "The password field is required"
             },
-            'match': {
+            match: {
                 message: "The password and confirm password must be match!",
                 field: 'confirm_password'
             }
         },
         mobile: {
-            'notEmpty': {
+            notEmpty: {
                 message: "The password field is required"
             },
-            'mobile': { 
+            mobile: { 
                 message: "The Mobile no must be valid!",
             }
         },        
         count: {
-            'count': { 
+            count: { 
                 type: 'checkbox', //here 2 types available like class and checkbox            
                 min :2,
                 massageDivId: 'your Message section id',
@@ -91,10 +91,10 @@ smValidator("package_form", {
             }
         }
         type: {
-            'notEmpty': {
+            notEmpty: {
                 message: "The package type is required"
             },
-            'itsDependable': {
+            itsDependable: {
                 rules: {
                     1: {
                         'pricing_detail_1[price_type]': {
