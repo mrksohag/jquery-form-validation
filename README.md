@@ -13,7 +13,7 @@
 ## Installation
 Download sm-validator file and include file
 ```
-<script type='text/javascript' src='/sm-validator.js'></script>
+<script type='text/javascript' src='sm-validator.js'></script>
 ```
 ##Dependencies
 <li>jQuery</li>
@@ -39,81 +39,85 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
 
 ##Demo Usages
 ```
-smValidator("package_form", {
-        title: {
-            notEmpty: {
-                message: "The title is required"
-            },            
-            stringLength: {
-                min:60,
-                max: 160,
-                message: "The title length must be within 60 to 160."
-            }
-        },
-        email: {
-            notEmpty: {
-                message: "The password field is required"
+    (function ($) {
+        var rules ={
+            title: {
+                notEmpty: {
+                    message: "The title is required"
+                },
+                stringLength: {
+                    min:60,
+                    max: 160,
+                    message: "The title length must be within 60 to 160."
+                }
             },
             email: {
-                message: "The email must be valid!",
-            }
-        },
-        password: {
-            notEmpty: {
-                message: "The password field is required"
-            },
-            match: {
-                message: "The password and confirm password must be match!",
-                field: 'confirm_password'
-            }
-        },
-        mobile: {
-            notEmpty: {
-                message: "The password field is required"
-            },
-            mobile: { 
-                message: "The Mobile no must be valid!",
-            }
-        },        
-        count: {
-            count: { 
-                type: 'checkbox', //here 2 types available like class and checkbox            
-                min :2,
-                massageDivId: 'your Message section id',
-                message: "The count field must be greter then 2!",
-            }
-        },
-        remoteCheck: {
-            remote: {
-                url:'Your url will be here',
-                type:'get', //your ajax form method and success return must be 1 for true validation
-                message: "The count field must be greter then 2!",
-            }
-        }
-        type: {
-            notEmpty: {
-                message: "The package type is required"
-            },
-            itsDependable: {
-                rules: {
-                    1: {
-                        'pricing_detail_1[price_type]': {
-                            'notEmpty': {
-                                message: "The package price type is required"
-                            }
-                        },
-                    },
-                    2: {
-                        'pricing_detail_2[basic_pricing_title]': {
-                            'notEmpty': {
-                                message: "The package basic price title is required"
-                            }
-                        },
-                    }
+                notEmpty: {
+                    message: "The email field is required"
+                },
+                email: {
+                    message: "The email must be valid!",
                 }
+            },
+            password: {
+                notEmpty: {
+                    message: "The password field is required"
+                },
+                match: {
+                    message: "The password and confirm password must be match!",
+                    field: 'confirm_password'
+                }
+            },
+            mobile: {
+                notEmpty: {
+                    message: "The password field is required"
+                },
+                mobile: {
+                    message: "The Mobile no must be valid!",
+                }
+            },
+            count: {
+                count: {
+                    type: 'checkbox', //here 2 types available like class and checkbox
+                    min :2,
+                    massageDivId: 'your Message section id',
+                    message: "The count field must be greter then 2!",
+                }
+            },
+            remoteCheck: {
+                remote: {
+                    url:'Your url will be here',
+                    type:'get', //your ajax form method and success return must be 1 for true validation
+                    message: "The count field must be greter then 2!",
+                }
+            },
+            type: {
+                notEmpty: {
+                    message: "The package type is required"
+                },
+                itsDependable: {
+                    rules: {
+                        1: {
+                            'pricing_detail_1[price_type]': {
+                                'notEmpty': {
+                                    message: "The package price type is required"
+                                }
+                            },
+                        },
+                        2: {
+                            'pricing_detail_2[basic_pricing_title]': {
+                                'notEmpty': {
+                                    message: "The package basic price title is required"
+                                }
+                            },
+                        }
+                    }
 
+                }
             }
-        }
 
-    }, 1);
+        };
+
+        smValidator("smValidationForm", rules, 1);
+    })(jQuery);
 ```

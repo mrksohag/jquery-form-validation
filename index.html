@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery from validation using sm-validator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="keywords"
+          content="Web design, Web Development, smddtech, mrksohag, validation, form validation, JS, jQuery">
+    <meta name="author" content="Engr. Mizanur Rahman Khan <engr.mrksohag@gmail.com>">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-center"><h1>jQuery from validation using sm-validator</h1></div>
+        </div>
+        <form method="post" action="/" id="smValidationForm">
+            <div class="col-md-4 form-group">
+                <label>User Name</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+            <div class="col-md-4 form-group">
+                <label>Title</label>
+                <input class="form-control" type="text" name="title">
+            </div>
+            <div class="col-md-4 form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" name="email">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-6 form-group">
+                <label>Password</label>
+                <input class="form-control" type="text" name="password">
+            </div>
+            <div class="col-md-6 form-group">
+                <label>Confirm Password</label>
+                <input class="form-control" type="text" name="confirm_password">
+            </div>
+            <div class="clearfix"></div>
+            <div class="col-md-4 form-group">
+                <label>Mobile</label>
+                <input class="form-control" type="text" name="mobile">
+            </div>
+            <div class="col-md-12 form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+        <div class="col-sm-12">
+            <div class="text-center"><a href="http://mrksohag.me">Developed By Mrksohag</a></div>
+        </div>
+    </div>
+</div>
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script type='text/javascript' src='sm-validator.js'></script>
+<script type="text/javascript">
+    (function ($) {
+        var rules = {
+            username: {
+                stringLength: {
+                    min: 60,
+                    max: 160,
+                    message: "The name length must be within 60 to 160."
+                }
+            },
+            title: {
+                notEmpty: {
+                    message: "The title is required"
+                },
+                stringLength: {
+                    min: 60,
+                    max: 160,
+                    message: "The title length must be within 60 to 160."
+                }
+            },
+            email: {
+                notEmpty: {
+                    message: "The email field is required"
+                },
+                email: {
+                    message: "The email must be valid!",
+                }
+            },
+            password: {
+                notEmpty: {
+                    message: "The password field is required"
+                },
+                match: {
+                    message: "The password and confirm password must be match!",
+                    field: 'confirm_password'
+                }
+            },
+            mobile: {
+                notEmpty: {
+                    message: "The Mobile no field is required"
+                },
+                mobile: {
+                    message: "The Mobile no must be valid!",
+                }
+            },
+            count: {
+                count: {
+                    type: 'checkbox', //here 2 types available like class and checkbox
+                    min: 2,
+                    massageDivId: 'your Message section id',
+                    message: "The count field must be greter then 2!",
+                }
+            },
+            remoteCheck: {
+                remote: {
+                    url: 'Your url will be here',
+                    type: 'get', //your ajax form method and success return must be 1 for true validation
+                    message: "The count field must be greter then 2!",
+                }
+            },
+            type: {
+                notEmpty: {
+                    message: "The package type is required"
+                },
+                itsDependable: {
+                    rules: {
+                        1: {
+                            'pricing_detail_1[price_type]': {
+                                'notEmpty': {
+                                    message: "The package price type is required"
+                                }
+                            },
+                        },
+                        2: {
+                            'pricing_detail_2[basic_pricing_title]': {
+                                'notEmpty': {
+                                    message: "The package basic price title is required"
+                                }
+                            },
+                        }
+                    }
+
+                }
+            }
+
+        };
+
+        smValidator("smValidationForm", rules, 1);
+    })(jQuery);
+</script>
+</body>
+</html>
