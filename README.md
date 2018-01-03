@@ -38,7 +38,7 @@ validationObject = Your Validation Rules Object like
     }
 }
 ```
-validationType = Validation type 2 or 1. 2 for return true or false. 1 for submit form validation if validation failed it will not submit form.
+validationType = Validation type 2 or 1. 1 for submit form validation, if validation failed it will not submit form. 2 for return type like if validation pass then true else false.
 
 ##Demo Usages
 ```
