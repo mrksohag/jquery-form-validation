@@ -1,14 +1,17 @@
 #jQuery from validation using sm-validator.
 
 ##Validation Check
-<li>Length</li>
-<li>Match</li>
-<li>Email</li>
-<li>Mobile No</li>
-<li>Count</li>
-<li>Remote Ajax Validation</li>
-<li>Not Empty Check</li>
-<li>Dependend Select Field Validation</li>
+<li>Length (Rule name stringLength)</li>
+<li>Match (Rule name match)</li>
+<li>Email (Rule name email)</li>
+<li>Mobile No (Rule name mobile)</li>
+<li>Count (Rule name count)</li>
+<li>Remote Ajax Validation (Rule name remote)</li>
+<li>Not Empty Check (Rule name notEmpty)</li>
+<li>Dependend Select Field Validation (Rule name itsDependable)</li>
+<li>Visa card validation (Rule name visaCard)</li>
+<li>Master card validation (Rule name masterCard)</li>
+<li>Card date month validation like mm-yyyy(01-2018) (Rule name cardDateMonth)</li>
 
 ## Installation
 Download sm-validator file and include file
@@ -39,14 +42,22 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
 
 ##Demo Usages
 ```
+<script type="text/javascript">
     (function ($) {
-        var rules ={
+        var rules = {
+            username: {
+                stringLength: {
+                    min: 60,
+                    max: 160,
+                    message: "The name length must be within 60 to 160."
+                }
+            },
             title: {
                 notEmpty: {
                     message: "The title is required"
                 },
                 stringLength: {
-                    min:60,
+                    min: 60,
                     max: 160,
                     message: "The title length must be within 60 to 160."
                 }
@@ -70,7 +81,7 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
             },
             mobile: {
                 notEmpty: {
-                    message: "The password field is required"
+                    message: "The Mobile no field is required"
                 },
                 mobile: {
                     message: "The Mobile no must be valid!",
@@ -79,15 +90,15 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
             count: {
                 count: {
                     type: 'checkbox', //here 2 types available like class and checkbox
-                    min :2,
+                    min: 2,
                     massageDivId: 'your Message section id',
                     message: "The count field must be greter then 2!",
                 }
             },
             remoteCheck: {
                 remote: {
-                    url:'Your url will be here',
-                    type:'get', //your ajax form method and success return must be 1 for true validation
+                    url: 'Your url will be here',
+                    type: 'get', //your ajax form method and success return must be 1 for true validation
                     message: "The count field must be greter then 2!",
                 }
             },
@@ -120,4 +131,5 @@ validationType = Validation type 2 or 1. 2 for return true or false. 1 for submi
 
         smValidator("smValidationForm", rules, 1);
     })(jQuery);
+</script>
 ```
