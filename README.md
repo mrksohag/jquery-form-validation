@@ -38,7 +38,7 @@ validationObject = Your Validation Rules Object like
     }
 }
 ```
-validationType = Validation type 2 or 1. 1 for submit form validation, if validation failed it will not submit form. 2 for return type like if validation pass then true else false.
+validationType = Validation type 2 or 1. 1 for submit form validation, if validation failed it will not submit form. 2 for return type like if validation pass then true else false, 3 for ajax from submit. it will return response and showing validation error and if error field not found then show alert.
 
 ##Demo Usages
 ```
